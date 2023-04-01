@@ -1,0 +1,16 @@
+gradio
+mdtex2html
+pypinyin
+tiktoken
+socksio
+tqdm
+colorama
+duckduckgo_search
+Pygments
+llama_index
+langchain
+markdown
+markdown2
+torch
+git+https://github.com/huggingface/peft.git
+git+https://github.com/huggingface/transformers.git
