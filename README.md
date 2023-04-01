@@ -85,6 +85,6 @@ python finetune.py 7b 32 0.0002
 # For the 13B model (takes about 16 hours)
 python finetune.py 13b 16 0.0001
 
-# For the 30B model (takes about 16 hours)
+# For the 30B model (takes about 36 hours)
 python finetune.py 30b 8 0.00005
 ```
