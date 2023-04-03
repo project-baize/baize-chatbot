@@ -28,7 +28,9 @@ This is the repo for the Baize project, which aims to build and share an Chat LL
 
 ## Demo
 
-![demo-example](example.gif)
+<p align="center">
+  <img alt="Demo" src="example.gif" />
+</p>
 
 You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/baize-lora-7B). The demo fetches the [LLaMa](https://huggingface.co/decapoda-research/llama-7b-hf) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
 
