@@ -38,7 +38,7 @@ You can either host it on your local machine or access the [online demo](https:/
 
 First, make sure your Python version is 3.8, and then install the required packages using the command below:
 
-```
+```bash
 cd demo
 pip install -r requirements.txt
 ```
@@ -59,7 +59,7 @@ python app.py $base_model $lora_model
 
 1. Install dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -97,7 +97,7 @@ If there's a specific dataset you want to use as seeds for ChatGPT self-chatting
 
 The fine-tuning code is designed to run on an A100-80G GPU. Th `finetune.py` script accepts three parameters: foundation model size (i.e., 7B, 13B, or 30B), batch size, learning rate and datasets.
 
-```
+```bash
 # For the 7B model (takes about 9 hours)
 python finetune.py 7b 32 0.0002 alpaca,stackoverflow,quora
 
@@ -109,7 +109,7 @@ python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 ```
 
 ### Citation
-```
+```bibtex
 @article{xu2023baize,
   title={Baize: An Open-Source Chat Model with Parameter-Efficient Tuning on Self-Chat Data},
   author={Xu, Canwen and Guo, Daya and Duan, Nan and McAuley, Julian},
