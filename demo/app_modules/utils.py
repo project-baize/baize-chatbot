@@ -16,8 +16,6 @@ import sys
 from pygments.lexers import guess_lexer, ClassNotFound
 
 import gradio as gr
-from pypinyin import lazy_pinyin
-import tiktoken
 import mdtex2html
 from markdown import markdown
 from pygments import highlight

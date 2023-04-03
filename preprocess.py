@@ -1,7 +1,12 @@
 import pickle
 import json
 import sys
+import os
 data_name = str(sys.argv[1])
+
+if not os.path.exists("data"):
+    os.makedirs("data")
+
 data = []
 for i in range(100):
     try:

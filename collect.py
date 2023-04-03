@@ -15,21 +15,21 @@ total = int(sys.argv[4])
 data_name = str(sys.argv[5])
 if data_name == "quora":
     dataset = load_dataset("quora")
-    try:
-        chat_content = pkl.load(open("collected_data/{}_chat_{}.pkl".format(data_name,index),"rb"))
-    except:
-        chat_content = {}
     question = [x["questions"]["text"][0] for idx, x in enumerate(dataset['train']) if idx%total==index]
 elif data_name == "stackoverflow":
     dataset = load_dataset("pacovaldez/stackoverflow-questions")
-    try:
-        chat_content = pkl.load(open("collected_data/{}_chat_{}.pkl".format(data_name,index),"rb"))
-    except:
-        chat_content = {}    
     question = [x["title"] for idx, x in enumerate(dataset['train']) if idx%total==index]
+elif data_name == "medical":
+    dataset = load_dataset("AnonymousSub/MedQuAD_47441_Question_Answer_Pairs")
+    question = sorted(list(set([x['Questions'] for idx, x in enumerate(dataset['train']) if idx%total==index])))
 else:
     print("{} is incorrect".format(data_name))
     exit()
+
+try:
+    chat_content = pkl.load(open("collected_data/{}_chat_{}.pkl".format(data_name,index),"rb"))
+except:
+    chat_content = {}  
 
 if not os.path.exists("collected_data"):
     os.makedirs("collected_data")
@@ -56,7 +56,8 @@ for query in tqdm(question,total=len(question)):
     
     if total_tokens >= max_tokens:
         break
-    if len(chat_content) % 1==0:
+    if len(chat_content) % 100==0:
         print("total_tokens: {}, examples: {}".format(total_tokens,len(chat_content)))
         pkl.dump(chat_content,open("collected_data/{}_chat_{}.pkl".format(data_name,index),"wb"))
+
 pkl.dump(chat_content,open("collected_data/{}_chat_{}.pkl".format(data_name,index),"wb"))

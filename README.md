@@ -28,9 +28,13 @@ This is the repo for the Baize project, which aims to build and share an Chat LL
 
 ## Demo
 
+![demo-example](example.gif)
+
 You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/baize-lora-7B). The demo fetches the [LLaMa](https://huggingface.co/decapoda-research/llama-7b-hf) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
 
 ### Setup
+
+First, make sure your Python version is 3.8, and then install the required packages using the command below:
 
 ```
 cd demo
@@ -66,12 +70,12 @@ You can use our [released data](data) or collect the data from ChatGPT using the
 ```bash
 num_process=10 # The number of processes to collect data
 max_total_tokens=500000 # Set maximum numbers of tokens to collect data
-api_key=xxxxxx # Set your openai api key
+api_key=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 # Set your openai api key
 for ((i=0; i<$num_process; i++))
 do
     python collect.py $api_key $max_total_tokens $i $num_process stackoverflow &
-    python collect.py $api_key $max_total_tokens $I $num_process quora &
-    python collect.py $api_key $max_total_tokens $I $num_process medical &
+    python collect.py $api_key $max_total_tokens $i $num_process quora &
+    python collect.py $api_key $max_total_tokens $i $num_process medical &
 done
 ```
 

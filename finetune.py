@@ -42,7 +42,8 @@ TARGET_MODULES = [
 DATA_PATH = "data/data_tmp.json"
 OUTPUT_DIR = "checkpoints/{}".format(size)
 
-
+if not os.path.exists("data"):
+    os.makedirs("data")
 # Load data
 data = []
 for x in sys.argv[4].split(","):
