@@ -39,13 +39,13 @@ pip install -r requirements.txt
 
 ### Running
 
-You can modify the model [here](https://github.com/project-baize/baize/blob/72919bfb7b6d326ae9ab9b8e165bd3a7fcc2f43d/demo/app.py#L16-L17)
+You can host the model on your local machine using the following command:
 
+```bash
+base_model=decapoda-research/llama-7b-hf
+lora_model=project-baize/baize-lora-7B
+python app.py $base_model $lora_model
 ```
-python app.py
-```
-
-
 
 ## How to Reproduce
 
