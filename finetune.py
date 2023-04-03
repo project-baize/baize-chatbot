@@ -44,10 +44,9 @@ OUTPUT_DIR = "checkpoints/{}".format(size)
 
 
 # Load data
-data_so = json.load(open("data/stackoverflow_chat_data.json"))
-data_quaro = json.load(open("data/quaro_chat_data.json"))
-data_alpaca = json.load(open("data/alpaca_chat_data.json"))
-data = data_so + data_quaro + data_alpaca
+data = []
+for x in sys.argv[4].split(","):
+    data += json.load(open("data/{}_chat_data.json".format(x)))
 random.shuffle(data)
 json.dump(data,open(DATA_PATH,"w"))
 data = load_dataset("json", data_files=DATA_PATH)

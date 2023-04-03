@@ -71,13 +71,16 @@ for ((i=0; i<$num_process; i++))
 do
     python collect.py $api_key $max_total_tokens $i $num_process stackoverflow &
     python collect.py $api_key $max_total_tokens $I $num_process quora &
+    python collect.py $api_key $max_total_tokens $I $num_process medical &
 done
 ```
 
 After collecting data, you use the following command to preprocess data:
 
 ```bash
-python preprocess.py
+python preprocess.py stackoverflow
+python preprocess.py quora
+python preprocess.py medical
 ```
 
 ### Use your own data
@@ -86,15 +89,15 @@ If there's a specific dataset you want to use as seeds for ChatGPT self-chatting
 
 ### Training
 
-The fine-tuning code is designed to run on an A100-80G GPU. Th `finetune.py` script accepts three parameters: foundation model size (i.e., 7B, 13B, or 30B), batch size, and learning rate.
+The fine-tuning code is designed to run on an A100-80G GPU. Th `finetune.py` script accepts three parameters: foundation model size (i.e., 7B, 13B, or 30B), batch size, learning rate and datasets.
 
 ```
 # For the 7B model (takes about 9 hours)
-python finetune.py 7b 32 0.0002
+python finetune.py 7b 32 0.0002 alpaca,stackoverflow,quora
 
 # For the 13B model (takes about 16 hours)
-python finetune.py 13b 16 0.0001
+python finetune.py 13b 16 0.0001 alpaca,stackoverflow,quora
 
 # For the 30B model (takes about 36 hours)
-python finetune.py 30b 8 0.00005
+python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 ```
