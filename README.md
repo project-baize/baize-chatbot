@@ -10,6 +10,8 @@ Baize is an open-source chat model fine-tuned with [LoRA](https://github.com/mic
 Baize (白泽) is a mythical creature in Chinese folklore, who speaks human languages and knows everything. This is exactly what we expect from a chat model.
 
 ## Overview
+⚠️ All model weights and data are for **research use ONLY**. Commercial use is **strictly prohibited**. We accept **NO responsibility or liability** for any use of our data, code or weights.
+
 This is the repo for the Baize project, which aims to build and share an Chat LLaMA model. This repository contains:
 
 - 54K/57K [dialogs](data) from Quaro and StackOverFlow questions
@@ -41,7 +43,7 @@ python app.py
 
 
 
-## Finetune
+## How to Reproduce
 
 ### Setup
 
@@ -74,7 +76,11 @@ After collecting data, you use the following command to preprocess data:
 python preprocess.py
 ```
 
-### Tranining
+### Use your own data
+
+If there's a specific dataset you want to use as seeds for ChatGPT self-chatting, you can simply modify `collect.py` to load your own data. 
+
+### Training
 
 The fine-tuning code is designed to run on an A100-80G GPU. Th `finetune.py` script accepts three parameters: foundation model size (i.e., 7B, 13B, or 30B), batch size, and learning rate.
 
