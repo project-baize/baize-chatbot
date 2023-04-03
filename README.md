@@ -18,9 +18,13 @@ This is the repo for the Baize project, which aims to build and share an Chat LL
 - The [code](collect.py) for collecting self-chat data
 - The [code](finetune.py) for fine-tuning the model
 - The [code](demo/app.py) for chat model demo
-- We have released [7B](https://huggingface.co/project-baize/baize-lora-7B), [13B](https://huggingface.co/project-baize/baize-lora-13B) and [30B](https://huggingface.co/project-baize/baize-lora-30B) models.
 
-
+### Model Release
+- [Baize-7B](https://huggingface.co/project-baize/baize-lora-7B)
+- [Baize-13B](https://huggingface.co/project-baize/baize-lora-13B)
+- [Baize-30B](https://huggingface.co/project-baize/baize-lora-30B)
+- Baize Healthcare-7B (Coming soon)
+- Baize Chinese-7B (Coming soon)
 
 ## Demo
 
