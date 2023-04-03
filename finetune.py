@@ -21,7 +21,7 @@ from peft import (
 
 # Parameters
 MICRO_BATCH_SIZE = int(sys.argv[2])
-BATCH_SIZE = 32
+BATCH_SIZE = 64
 size = sys.argv[1]
 GRADIENT_ACCUMULATION_STEPS = BATCH_SIZE // MICRO_BATCH_SIZE
 EPOCHS = 1
