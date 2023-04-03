@@ -70,7 +70,7 @@ You can use our [released data](data) or collect the data from ChatGPT using the
 ```bash
 num_process=10 # The number of processes to collect data
 max_total_tokens=500000 # Set maximum numbers of tokens to collect data
-api_key=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 # Set your openai api key
+api_key=xxxxxxxxxxxxxxxxx # Set your openai api key
 for ((i=0; i<$num_process; i++))
 do
     python collect.py $api_key $max_total_tokens $i $num_process stackoverflow &
