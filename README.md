@@ -14,10 +14,10 @@ Baize (白泽) is a mythical creature in Chinese folklore, who speaks human lang
 
 This is the repo for the Baize project, which aims to build and share an Chat LLaMA model. This repository contains:
 
-- 54K/57K [dialogs](data) from Quaro and StackOverFlow questions
+- 54K/57K [dialogs](data) from Quora, StackOverFlow and MedQA questions
 - The [code](collect.py) for collecting self-chat data
 - The [code](finetune.py) for fine-tuning the model
-- The [code](demo/app.py) for chat model demo
+- The [code](demo/app.py) for chat model demo (forked from [ChuanhuChatGPT](https://github.com/GaiZhenbiao/ChuanhuChatGPT))
 
 ### Model Release
 - [Baize-7B](https://huggingface.co/project-baize/baize-lora-7B)
@@ -63,7 +63,7 @@ python app.py $base_model $lora_model
 pip install -r requirements.txt
 ```
 
-2. If bitsandbytes doesn't work, [install it from source.](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md) Windows users can follow [these instructions](https://github.com/tloen/alpaca-lora/issues/17).
+2. If `bitsandbytes` doesn't work, [install it from source](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md). Windows users can follow [these instructions](https://github.com/tloen/alpaca-lora/issues/17).
 
 ### Data Collecting
 
@@ -107,3 +107,14 @@ python finetune.py 13b 16 0.0001 alpaca,stackoverflow,quora
 # For the 30B model (takes about 36 hours)
 python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 ```
+
+### Citation
+```
+@article{xu2023baize,
+  title={Baize: An Open-Source Chat Model with Parameter-Efficient Tuning on Self-Chat Data},
+  author={Xu, Canwen and Guo, Daya and Duan, Nan and McAuley, Julian},
+  journal={arXiv preprint},
+  year={2023}
+}
+```
+
