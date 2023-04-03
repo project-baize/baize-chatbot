@@ -23,7 +23,7 @@ This is the repo for the Baize project, which aims to build and share an Chat LL
 - [Baize-7B](https://huggingface.co/project-baize/baize-lora-7B)
 - [Baize-13B](https://huggingface.co/project-baize/baize-lora-13B)
 - [Baize-30B](https://huggingface.co/project-baize/baize-lora-30B)
-- Baize Healthcare-7B (Coming soon)
+- [Baize Healthcare-7B](https://huggingface.co/project-baize/baize-healthcare-lora-7b)
 - Baize Chinese-7B (Coming soon)
 
 ## Demo
