@@ -1,4 +1,3 @@
-
 import os
 import sys
 import torch
@@ -16,7 +15,6 @@ from peft import (
     get_peft_model,
     get_peft_model_state_dict,
 )
-
 
 
 # Parameters
@@ -49,7 +47,7 @@ data = []
 for x in sys.argv[4].split(","):
     data += json.load(open("data/{}_chat_data.json".format(x)))
 random.shuffle(data)
-json.dump(data,open(DATA_PATH,"w"))
+json.dump(data, open(DATA_PATH, "w"))
 data = load_dataset("json", data_files=DATA_PATH)
 
 # Load Model
@@ -65,7 +63,7 @@ model = LlamaForCausalLM.from_pretrained(
     load_in_8bit=True,
     device_map=device_map,
 )
-total_params,params=0,0
+total_params, params = 0, 0
 
 tokenizer = LlamaTokenizer.from_pretrained(
     "decapoda-research/llama-{}-hf".format(size), add_eos_token=True
@@ -84,21 +82,25 @@ config = LoraConfig(
 config.save_pretrained(OUTPUT_DIR)
 
 model = get_peft_model(model, config)
-tokenizer.pad_token_id = 0 
+tokenizer.pad_token_id = 0
 
-for n,p in model.model.named_parameters():
+for n, p in model.model.named_parameters():
     if any([x in n for x in ["lora"]]):
         total_params += p.numel()
     params += p.numel()
 
-print('Total number of parameters: {}M, rate: {}%'.format(total_params//1000/1000,round(total_params/params*100,2)))
-
+print(
+    "Total number of parameters: {}M, rate: {}%".format(
+        total_params // 1000 / 1000, round(total_params / params * 100, 2)
+    )
+)
 
 
 # Data Preprocess
 def generate_prompt(data_point):
     return data_point["input"]
-     
+
+
 def tokenize(prompt):
     result = tokenizer(
         prompt,
@@ -128,7 +130,7 @@ else:
     val_data = None
 
 
-# Training 
+# Training
 trainer = transformers.Trainer(
     model=model,
     train_dataset=train_data,

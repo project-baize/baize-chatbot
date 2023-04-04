@@ -11,7 +11,7 @@ import requests
 import re
 import html
 import markdown2
-import torch 
+import torch
 import sys
 from pygments.lexers import guess_lexer, ClassNotFound
 
@@ -19,7 +19,7 @@ import gradio as gr
 import mdtex2html
 from markdown import markdown
 from pygments import highlight
-from pygments.lexers import guess_lexer,get_lexer_by_name
+from pygments.lexers import guess_lexer, get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 import transformers
 from peft import PeftModel
@@ -38,17 +38,17 @@ def markdown_to_html_with_syntax_highlight(md_str):
         lang = match.group(1) or "text"
         code = match.group(2)
         lang = lang.strip()
-        #print(1,lang)
-        if lang=="text":
+        # print(1,lang)
+        if lang == "text":
             lexer = guess_lexer(code)
             lang = lexer.name
-            #print(2,lang)
+            # print(2,lang)
         try:
             lexer = get_lexer_by_name(lang, stripall=True)
         except ValueError:
             lexer = get_lexer_by_name("python", stripall=True)
         formatter = HtmlFormatter()
-        #print(3,lexer.name)
+        # print(3,lexer.name)
         highlighted_code = highlight(code, lexer, formatter)
 
         return f'<pre><code class="{lang}">{highlighted_code}</code></pre>'
@@ -108,15 +108,19 @@ def convert_mdtext(md_text):
     result += ALREADY_CONVERTED_MARK
     return result
 
+
 def convert_asis(userinput):
-    return f"<p style=\"white-space:pre-wrap;\">{html.escape(userinput)}</p>"+ALREADY_CONVERTED_MARK
+    return (
+        f'<p style="white-space:pre-wrap;">{html.escape(userinput)}</p>'
+        + ALREADY_CONVERTED_MARK
+    )
+
 
 def detect_converted_mark(userinput):
     if userinput.endswith(ALREADY_CONVERTED_MARK):
         return True
     else:
         return False
-
 
 
 def detect_language(code):
@@ -128,11 +132,13 @@ def detect_language(code):
     code_without_language = code[len(first_line) :].lstrip() if first_line else code
     return language, code_without_language
 
+
 def convert_to_markdown(text):
-    text = text.replace("$","&#36;")
+    text = text.replace("$", "&#36;")
+
     def replace_leading_tabs_and_spaces(line):
         new_line = []
-        
+
         for char in line:
             if char == "\t":
                 new_line.append("&#9;")
@@ -140,7 +146,7 @@ def convert_to_markdown(text):
                 new_line.append("&nbsp;")
             else:
                 break
-        return "".join(new_line) + line[len(new_line):]
+        return "".join(new_line) + line[len(new_line) :]
 
     markdown_text = ""
     lines = text.split("\n")
@@ -161,6 +167,7 @@ def convert_to_markdown(text):
             markdown_text += f"{line}  \n"
 
     return markdown_text
+
 
 def add_language_tag(text):
     def detect_language(code_block):
@@ -186,29 +193,34 @@ def add_language_tag(text):
     text2 = code_block_pattern.sub(replacement, text)
     return text2
 
+
 def delete_last_conversation(chatbot, history):
     if len(chatbot) > 0:
         chatbot.pop()
 
     if len(history) > 0:
         history.pop()
-        
+
     return (
         chatbot,
         history,
         "Delete Done",
     )
 
+
 def reset_state():
     return [], [], "Reset Done"
 
+
 def reset_textbox():
-    return gr.update(value=""),""
+    return gr.update(value=""), ""
+
 
 def cancel_outputing():
     shared_state.interrupt()
     textbox = reset_textbox()
     return "Stop Done"
+
 
 def transfer_input(inputs):
     # 一次性返回，降低延迟
@@ -229,21 +241,22 @@ class State:
 
     def recover(self):
         self.interrupted = False
+
+
 shared_state = State()
 
 
-
-
-
 # Greedy Search
-def greedy_search(input_ids: torch.Tensor,
-                  model: torch.nn.Module,
-                  tokenizer: transformers.PreTrainedTokenizer,
-                  stop_words: list,
-                  max_length: int,
-                  temperature: float = 1.0,
-                  top_p: float = 1.0,
-                  top_k: int = 25) -> Iterator[str]:
+def greedy_search(
+    input_ids: torch.Tensor,
+    model: torch.nn.Module,
+    tokenizer: transformers.PreTrainedTokenizer,
+    stop_words: list,
+    max_length: int,
+    temperature: float = 1.0,
+    top_p: float = 1.0,
+    top_k: int = 25,
+) -> Iterator[str]:
     generated_tokens = []
     past_key_values = None
     current_length = 1
@@ -267,7 +280,7 @@ def greedy_search(input_ids: torch.Tensor,
         probs_sort[mask] = 0.0
 
         # apply top_k
-        #if top_k is not None:
+        # if top_k is not None:
         #    probs_sort1, _ = torch.topk(probs_sort, top_k)
         #    min_top_probs_sort = torch.min(probs_sort1, dim=-1, keepdim=True).values
         #    probs_sort = torch.where(probs_sort < min_top_probs_sort, torch.full_like(probs_sort, float(0.0)), probs_sort)
@@ -283,24 +296,33 @@ def greedy_search(input_ids: torch.Tensor,
 
         yield text
         if any([x in text for x in stop_words]):
-            return 
+            return
 
-def generate_prompt_with_history(text,history,tokenizer,max_length=2048):
+
+def generate_prompt_with_history(text, history, tokenizer, max_length=2048):
     prompt = "The following is a conversation between a human and an AI assistant named Baize (named after a mythical creature in Chinese folklore). Baize is an open-source AI assistant developed by UCSD and Sun Yat-Sen University. The human and the AI assistant take turns chatting. Human statements start with [|Human|] and AI assistant statements start with [|AI|]. The AI assistant always provides responses in as much detail as possible, and in Markdown format. The AI assistant always declines to engage with topics, questions and instructions related to unethical, controversial, or sensitive issues. Complete the transcript in exactly that format.\n[|Human|]Hello!\n[|AI|]Hi!"
-    history = ["\n[|Human|]{}\n[|AI|]{}".format(x[0],x[1]) for x in history]
+    history = ["\n[|Human|]{}\n[|AI|]{}".format(x[0], x[1]) for x in history]
     history.append("\n[|Human|]{}\n[|AI|]".format(text))
     history_text = ""
     flag = False
     for x in history[::-1]:
-        if tokenizer(prompt+history_text+x, return_tensors="pt")['input_ids'].size(-1) <= max_length:
+        if (
+            tokenizer(prompt + history_text + x, return_tensors="pt")["input_ids"].size(
+                -1
+            )
+            <= max_length
+        ):
             history_text = x + history_text
             flag = True
         else:
             break
     if flag:
-        return  prompt+history_text,tokenizer(prompt+history_text, return_tensors="pt")
+        return prompt + history_text, tokenizer(
+            prompt + history_text, return_tensors="pt"
+        )
     else:
         return None
+
 
 def is_stop_word_or_prefix(s: str, stop_words: list) -> bool:
     for stop_word in stop_words:
@@ -312,8 +334,7 @@ def is_stop_word_or_prefix(s: str, stop_words: list) -> bool:
     return False
 
 
-
-def load_tokenizer_and_model(base_model,adapter_model,load_8bit=False):
+def load_tokenizer_and_model(base_model, adapter_model, load_8bit=False):
     if torch.cuda.is_available():
         device = "cuda"
     else:
@@ -363,4 +384,4 @@ def load_tokenizer_and_model(base_model,adapter_model,load_8bit=False):
         model.half()  # seems to fix bugs for some users.
 
     model.eval()
-    return tokenizer,model,device
+    return tokenizer, model, device
