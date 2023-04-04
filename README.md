@@ -96,7 +96,7 @@ If there's a specific dataset you want to use as seeds for ChatGPT self-chatting
 
 ### Training
 
-The fine-tuning code is designed to run on an A100-80G GPU. The `finetune.py` script accepts three parameters: foundation model size (i.e., 7B, 13B, or 30B), batch size, learning rate and datasets. Note the total batch size is fixed to 64 (can be modified [here](https://github.com/project-baize/baize/blob/cbcf39902fcdfab8d935b7ea771a4e7d452a1be0/finetune.py#L24)) and the batch size here is the per device batch size before gradient accumulation. Set it to a smaller value if you are training with a GPU with smaller VRAM.
+The fine-tuning code is designed to run on an A100-80G GPU. The `finetune.py` script accepts three parameters: foundation model size (i.e., 7B, 13B, or 30B), batch size, learning rate and datasets. Note the total batch size is fixed to 64 (can be modified [here](https://github.com/project-baize/baize/blob/cbcf39902fcdfab8d935b7ea771a4e7d452a1be0/finetune.py#L24)) and the batch size here is the per device batch size before gradient accumulation. Set it to a smaller value if you are training on a GPU with smaller VRAM.
 
 ```bash
 # For the 7B model (takes about 9 hours)
