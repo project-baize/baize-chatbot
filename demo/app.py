@@ -30,14 +30,14 @@ def predict(text,
         return 
 
     inputs = generate_prompt_with_history(text,history,tokenizer,max_length=max_context_length_tokens)
-    if inputs is False:
-        yield chatbot+[[text,"Sorry, the input is too long."]],history,"Generate Fail"
+    if inputs is None:
+        yield chatbot,history,"Too Long Input"
         return 
     else:
         prompt,inputs=inputs
         begin_length = len(prompt)
-    
-    input_ids = inputs["input_ids"].to(device)
+    input_ids = inputs["input_ids"][:,-max_context_length_tokens:].to(device)
+    torch.cuda.empty_cache()
 
     with torch.no_grad():
         for x in greedy_search(input_ids,model,tokenizer,stop_words=["[|Human|]", "[|AI|]"],max_length=max_length_tokens,temperature=temperature,top_p=top_p):
@@ -56,6 +56,7 @@ def predict(text,
                     return
                 except:
                     pass
+    torch.cuda.empty_cache()
     print(prompt)
     print(x)
     print("="*80)
