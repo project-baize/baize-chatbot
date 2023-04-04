@@ -26,12 +26,12 @@ def predict(text,
             max_length_tokens,
             max_context_length_tokens,):
     if text=="":
-        yield chatbot,history,"Empty Context"
+        yield chatbot,history,"Empty context."
         return 
 
     inputs = generate_prompt_with_history(text,history,tokenizer,max_length=max_context_length_tokens)
     if inputs is None:
-        yield chatbot,history,"Too Long Input"
+        yield chatbot,history,"Input too long."
         return 
     else:
         prompt,inputs=inputs
@@ -48,11 +48,11 @@ def predict(text,
                     x = x[:x.index("[|AI|]")].strip() 
                 x = x.strip(" ")   
                 a, b=   [[y[0],convert_to_markdown(y[1])] for y in history]+[[text, convert_to_markdown(x)]],history + [[text,x]]
-                yield a, b, "Generating……"
+                yield a, b, "Generating..."
             if shared_state.interrupted:
                 shared_state.recover()
                 try:
-                    yield a, b, "Stop Success"
+                    yield a, b, "Stop: Success"
                     return
                 except:
                     pass
@@ -61,7 +61,7 @@ def predict(text,
     print(x)
     print("="*80)
     try:
-        yield a,b,"Generate Success"
+        yield a,b,"Generate: Success"
     except:
         pass
         
@@ -76,7 +76,7 @@ def retry(
         ):
     logging.info("Retry……")
     if len(history) == 0:
-        yield chatbot, history, f"Empty context"
+        yield chatbot, history, "Empty context."
         return
     chatbot.pop()
     inputs = history.pop()[0]
