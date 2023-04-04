@@ -74,7 +74,7 @@ def retry(
         max_length_tokens,
         max_context_length_tokens,
         ):
-    logging.info("Retry……")
+    logging.info("Retry...")
     if len(history) == 0:
         yield chatbot, history, "Empty context."
         return
@@ -129,7 +129,7 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                         label="Top-p",
                     )
                     temperature = gr.Slider(
-                        minimum=-0,
+                        minimum=0.1,
                         maximum=2.0,
                         value=1,
                         step=0.1,
