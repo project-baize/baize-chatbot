@@ -113,7 +113,7 @@ python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 @article{xu2023baize,
   title={Baize: An Open-Source Chat Model with Parameter-Efficient Tuning on Self-Chat Data},
   author={Xu, Canwen and Guo, Daya and Duan, Nan and McAuley, Julian},
-  journal={arXiv preprint},
+  journal={arXiv preprint arXiv:2304.01196},
   year={2023}
 }
 ```
