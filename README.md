@@ -53,6 +53,12 @@ base_model=decapoda-research/llama-7b-hf
 lora_model=project-baize/baize-lora-7B
 python app.py $base_model $lora_model
 ```
+#### GPU VRAM Requirements
+|           | Inference (without int8) |
+|-----------|--------------------------|
+| Baize-7B  | 16GB                     |
+| Baize-13B | 28GB                     |
+| Baize-30B | 67GB                     |
 
 ## How to Reproduce
 
@@ -108,6 +114,15 @@ python finetune.py 13b 16 0.0001 alpaca,stackoverflow,quora
 # For the 30B model (takes about 36 hours)
 python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 ```
+#### GPU VRAM Consumption
+With the settings above:
+
+|           | Training (with int8) |
+|-----------|----------------------|
+| Baize-7B  | 26GB                 |
+| Baize-13B | 25GB                 |
+| Baize-30B | 42GB                 |
+
 
 ### Citation
 ```bibtex
