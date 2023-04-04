@@ -290,16 +290,17 @@ def generate_prompt_with_history(text,history,tokenizer,max_length=2048):
     history = ["\n[|Human|]{}\n[|AI|]{}".format(x[0],x[1]) for x in history]
     history.append("\n[|Human|]{}\n[|AI|]".format(text))
     history_text = ""
-
+    flag = False
     for x in history[::-1]:
         if tokenizer(prompt+history_text+x, return_tensors="pt")['input_ids'].size(-1) <= max_length:
             history_text = x + history_text
             flag = True
+        else:
+            break
     if flag:
         return  prompt+history_text,tokenizer(prompt+history_text, return_tensors="pt")
     else:
-        return False
-
+        return None
 
 def is_stop_word_or_prefix(s: str, stop_words: list) -> bool:
     for stop_word in stop_words:
