@@ -15,7 +15,7 @@ Baize (白泽) is a mythical creature in Chinese folklore, who speaks human lang
 
 This is the repo for the Baize project, which aims to build and share an Chat LLaMA model. This repository contains:
 
-- 54K/57K [dialogs](data) from Quora, StackOverFlow and MedQA questions
+- 54K/57K/47K [dialogs](data) from Quora, StackOverFlow and MedQA questions
 - The [code](collect.py) for collecting self-chat data
 - The [code](finetune.py) for fine-tuning the model
 - The [code](demo/app.py) for chat model demo (forked from [ChuanhuChatGPT](https://github.com/GaiZhenbiao/ChuanhuChatGPT))
