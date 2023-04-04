@@ -7,3 +7,7 @@ bitsandbytes
 git+https://github.com/huggingface/peft.git
 gradio
 appdirs
+markdown2
+pygments
+mdtex2html
+llama_index
