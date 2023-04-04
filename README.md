@@ -28,6 +28,8 @@ This is the repo for the Baize project, which aims to build and share an Chat LL
 - Baize Chinese-7B (Coming soon)
 
 ## Demo
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/project-baize/baize-lora-7B) 
+[![Duplicate this Space](https://huggingface.co/datasets/huggingface/badges/raw/main/duplicate-this-space-md.svg)](https://huggingface.co/spaces/project-baize/baize-lora-7B?duplicate=true)
 
 <p align="center">
   <img alt="Demo" src="example.gif" />
@@ -35,7 +37,7 @@ This is the repo for the Baize project, which aims to build and share an Chat LL
 
 You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/baize-lora-7B). The demo fetches the [LLaMa](https://huggingface.co/decapoda-research/llama-7b-hf) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
 
-### Setup
+### How to Run Locally
 
 First, make sure your Python version is 3.8, and then install the required packages using the command below:
 
@@ -43,8 +45,6 @@ First, make sure your Python version is 3.8, and then install the required packa
 cd demo
 pip install -r requirements.txt
 ```
-
-### Running
 
 You can host the model on your local machine using the following command:
 
@@ -118,4 +118,6 @@ python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
   year={2023}
 }
 ```
+<hr>
 
+[![Share to Community](https://huggingface.co/datasets/huggingface/badges/raw/main/powered-by-huggingface-light.svg)](https://huggingface.co)
