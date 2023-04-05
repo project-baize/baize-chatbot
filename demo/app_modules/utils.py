@@ -246,8 +246,7 @@ class State:
 shared_state = State()
 
 
-# Greedy Search
-def greedy_search(
+def sample_decode(
     input_ids: torch.Tensor,
     model: torch.nn.Module,
     tokenizer: transformers.PreTrainedTokenizer,

@@ -44,7 +44,7 @@ def predict(
     torch.cuda.empty_cache()
 
     with torch.no_grad():
-        for x in greedy_search(
+        for x in sample_decode(
             input_ids,
             model,
             tokenizer,
