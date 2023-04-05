@@ -380,7 +380,7 @@ def load_tokenizer_and_model(base_model, adapter_model, load_8bit=False):
             device_map={"": device},
         )
 
-    if not load_8bit and device !="cpu":
+    if not load_8bit and device != "cpu":
         model.half()  # seems to fix bugs for some users.
 
     model.eval()
