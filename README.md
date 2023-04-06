@@ -1,7 +1,7 @@
 <p align="center">
 <img width="500px" alt="Project Baize" src="https://user-images.githubusercontent.com/22514219/229195563-0cddfa74-e52f-4413-b4b4-e4ba489c4b3d.png">
 </p>
-<p align="center"><a href="https://arxiv.org/abs/2304.01196">[📄 Paper]</a> | <a href="https://huggingface.co/spaces/project-baize/baize-lora-7B">[🤗 Demo]</a> </p>
+<p align="center"><a href="https://arxiv.org/abs/2304.01196">[📄 Paper]</a> | <a href="https://huggingface.co/spaces/project-baize/Baize-7B">[🤗 Demo]</a> </p>
 <hr>
 
 ## What's Baize?
@@ -28,14 +28,14 @@ This is the repo for the Baize project, which aims to build a chat model with LL
 - Baize Chinese-7B (Coming soon)
 
 ## Demo
-[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/project-baize/baize-lora-7B) 
-[![Duplicate this Space](https://huggingface.co/datasets/huggingface/badges/raw/main/duplicate-this-space-md.svg)](https://huggingface.co/spaces/project-baize/baize-lora-7B?duplicate=true)
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/project-baize/Baize-7B) 
+[![Duplicate this Space](https://huggingface.co/datasets/huggingface/badges/raw/main/duplicate-this-space-md.svg)](https://huggingface.co/spaces/project-baize/Baize-7B?duplicate=true)
 
 <p align="center">
   <img alt="Demo" src="https://user-images.githubusercontent.com/22514219/229863275-0e83c1cf-0661-4afa-9a47-1ce20fb521ae.gif">
 </p>
 
-You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/baize-lora-7B). The demo fetches the [LLaMA](https://huggingface.co/decapoda-research/llama-7b-hf) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
+You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/Baize-7B). The demo fetches the [LLaMA](https://huggingface.co/decapoda-research/llama-7b-hf) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
 
 ### How to Run Locally
 
