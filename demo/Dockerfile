@@ -59,8 +59,8 @@ RUN pip install -r requirements.txt
 
 RUN mkdir -p /workspace
 
-COPY main.py workspace/
+COPY app.py workspace/
 
 WORKDIR /workspace
 
-ENTRYPOINT [ "python", "main.py" ]
+ENTRYPOINT [ "python", "app.py" ]
