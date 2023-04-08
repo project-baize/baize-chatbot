@@ -117,7 +117,7 @@ python finetune.py 13b 16 0.0001 alpaca,stackoverflow,quora
 python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 ```
 #### GPU VRAM Consumption
-With the settings above:
+With the settings ABOVE:
 
 |           | Training (with int8) |
 |-----------|----------------------|
@@ -125,6 +125,7 @@ With the settings above:
 | Baize-13B | 25GB                 |
 | Baize-30B | 42GB                 |
 
+Got a question? See [this issue](https://github.com/project-baize/baize-chatbot/issues/26).
 
 ### Citation
 ```bibtex
