@@ -60,7 +60,11 @@ python app.py $base_model $lora_model
 | Baize-13B | 28GB                     |
 | Baize-30B | 67GB                     |
 
-If you have a GPU with smaller VRAM, you can do inference with `int8`, following [this issue](https://github.com/project-baize/baize/issues/15).
+If you have a GPU with smaller VRAM, you can do inference with `int8`, by passing the 8bit argument:
+
+```bash
+python app.py $base_model $lora_model 8bit
+```
 
 ## How to Reproduce
 

@@ -13,9 +13,15 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
 )
 
+load_8bit = (
+    sys.argv[3].lower().startswith("8")
+    if len(sys.argv) > 3 else False
+)
 base_model = sys.argv[1]
 adapter_model = sys.argv[2]
-tokenizer, model, device = load_tokenizer_and_model(base_model, adapter_model)
+tokenizer, model, device = load_tokenizer_and_model(
+    base_model, adapter_model, load_8bit=load_8bit
+)
 
 
 def predict(
