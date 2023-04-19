@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, Callable, Dict, List, Tuple, Type
+from typing import TYPE_CHECKING, Any, Callable, Dict, List, Tuple, Type, Iterator
 import logging
 import json
 import os
