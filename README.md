@@ -25,8 +25,8 @@ This is the repo for the Baize project, which aims to build a chat model with LL
 - [Baize-13B](https://huggingface.co/project-baize/baize-lora-13B)
 - [Baize-30B](https://huggingface.co/project-baize/baize-lora-30B)
 - [Baize Healthcare-7B](https://huggingface.co/project-baize/baize-healthcare-lora-7b)
+- [Baize Italian - Fauno](https://github.com/RSTLess-research/Fauno-Italian-LLM/)
 - Baize Chinese-7B (Coming soon)
-
 ## Demo
 [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/project-baize/Baize-7B) 
 [![Duplicate this Space](https://huggingface.co/datasets/huggingface/badges/raw/main/duplicate-this-space-md.svg)](https://huggingface.co/spaces/project-baize/Baize-7B?duplicate=true)
