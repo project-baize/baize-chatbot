@@ -42,7 +42,7 @@ This is the repo for the Baize project, which aims to build a chat model with LL
   <img alt="Demo" src="https://user-images.githubusercontent.com/22514219/229863275-0e83c1cf-0661-4afa-9a47-1ce20fb521ae.gif">
 </p>
 
-You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/Baize-7B). The demo fetches the [LLaMA](https://huggingface.co/decapoda-research/llama-7b-hf) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
+You can either host it on your local machine or access the [online demo](https://huggingface.co/spaces/project-baize/Baize-7B). The demo fetches the [LLaMA](https://huggingface.co/huggyllama/llama-7b) model and the [LoRA weights](https://huggingface.co/project-baize/baize-lora-7B) from the Hugging Face model hub, then runs a user-friendly Gradio interface for chatting.
 
 ### How to Run Locally
 
@@ -56,7 +56,8 @@ pip install -r requirements.txt
 You can host the model on your local machine using the following command:
 
 ```bash
-base_model=decapoda-research/llama-7b-hf
+# We assume you have obtained access to use LLaMA. The following LLaMA weights are from a 3rd party.
+base_model=huggyllama/llama-7b
 lora_model=project-baize/baize-lora-7B
 python app.py $base_model $lora_model
 ```
@@ -140,8 +141,13 @@ Got a question? See [this issue](https://github.com/project-baize/baize-chatbot/
 
 ### Merge LoRA into LLaMA
 Now you can easily merge the trained LoRA weights into a LLaMA model so you can use it with everything that supports standard Hugging Face API!
+
+Here's an example for merging `baize-lora-7B` into LLaMA-7B.
 ```bash
-python merge_lora.py --base ~/model_weights/llama-7b --target ~/model_weights/baize-7b --lora project-baize/baize-lora-7B
+python merge_lora.py \
+--base huggyllama/llama-7b \
+--target ~/model_weights/baize-7b \
+--lora project-baize/baize-lora-7B
 ```
 
 ## Citation
