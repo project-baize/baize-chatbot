@@ -135,7 +135,13 @@ With the settings ABOVE:
 
 Got a question? See [this issue](https://github.com/project-baize/baize-chatbot/issues/26).
 
-### Citation
+### Merge LoRA into LLaMA
+Now you can easily merge the trained LoRA weights into a LLaMA model so you can use it with everything that supports standard Hugging Face API!
+```bash
+python merge_lora.py --base ~/model_weights/llama-7b --target ~/model_weights/baize-7b --lora project-baize/baize-lora-7B
+```
+
+## Citation
 ```bibtex
 @article{xu2023baize,
   title={Baize: An Open-Source Chat Model with Parameter-Efficient Tuning on Self-Chat Data},
