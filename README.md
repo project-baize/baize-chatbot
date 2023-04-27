@@ -1,10 +1,11 @@
 <p align="center">
 <img width="500px" alt="Project Baize" src="https://user-images.githubusercontent.com/22514219/229195563-0cddfa74-e52f-4413-b4b4-e4ba489c4b3d.png">
 </p>
-<p align="center"><a href="https://arxiv.org/abs/2304.01196">[📄 Paper]</a> | <a href="https://huggingface.co/spaces/project-baize/Baize-7B">[🤗 Demo]</a> </p>
+<p align="center"><a href="https://arxiv.org/abs/2304.01196">[📄 Paper]</a> | <a href="https://huggingface.co/spaces/project-baize/Baize-7B">[🤗 Demo]</a> | <a href="https://github.com/project-baize/baize-chatbot#cli-and-api">[🔧 CLI & API]</a> </p>
 <hr>
 
 ## News
+- **[Apr. 27, 2023]** [Fastchat](https://github.com/lm-sys/FastChat) now supports Baize. Try the new [CLI and API](https://github.com/project-baize/baize-chatbot#cli-and-api)!
 - **[Apr. 21, 2023]** We now have a [script](https://github.com/project-baize/baize-chatbot#merge-lora-into-llama) to merge LoRA weights into standard HF model so you can use it everywhere HF is supported!
 
 ## What's Baize?
@@ -33,6 +34,29 @@ This is the repo for the Baize project, which aims to build a chat model with LL
 ### Community Models and Data
 - [Fauno](https://github.com/RSTLess-research/Fauno-Italian-LLM/) is an Italian version of Baize.
 - [Dutch Data](https://github.com/project-baize/baize-chatbot/issues/34): Baize data translated into Dutch.
+
+## CLI and API
+Now you can use Baize with [Fastchat](https://github.com/lm-sys/FastChat) for the CLI and API provided by Fastchat!
+
+First, install the latest version of Fastchat:
+```bash
+pip install git+https://github.com/huggingface/peft.git
+pip install git+https://github.com/lm-sys/FastChat.git
+```
+
+Then, merge Baize's LoRA weights into LLaMA. Take 7B checkpoint as an example.
+```bash
+# Note you have to include "baize" in the target directory so Fastchat can recognize Baize.
+python3 -m fastchat.model.apply_lora --base huggyllama/llama-7b --target ./model_weights/baize-7b --lora project-baize/baize-lora-7B
+```
+
+Now, run the CLI in your terminal! More options and configs can be found [here](https://github.com/lm-sys/FastChat#inference-with-command-line-interface).
+```bash
+# Optional: Add `--style rich` for better style.
+python -m fastchat.serve.cli --model-path ./model_weights/baize-7b
+```
+
+You can use Baize with OpenAI API or Hugging Face API following the instruction [here](https://github.com/lm-sys/FastChat#api).
 
 ## Demo
 [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/project-baize/Baize-7B) 
@@ -73,28 +97,6 @@ If you have a GPU with smaller VRAM, you can do inference with `int8`, by passin
 ```bash
 python app.py $base_model $lora_model 8bit
 ```
-
-## CLI and API
-Now you can use Baize with [Fastchat](https://github.com/lm-sys/FastChat) to use the CLI and API provided by Fastchat.
-
-First, install the latest version of Fastchat:
-```bash
-pip install git+https://github.com/huggingface/peft.git
-pip install git+https://github.com/lm-sys/FastChat.git
-```
-
-Then, merge Baize's LoRA weights into LLaMA. Take 7B checkpoint as an example.
-```bash
-# Note you have to include "baize" in the target directory so Fastchat can recognize Baize.
-python3 -m fastchat.model.apply_lora --base huggyllama/llama-7b --target ./model_weights/baize-7b --lora project-baize/baize-lora-7B
-```
-
-Now, run the CLI now! More options and configs can be found [here](https://github.com/lm-sys/FastChat#inference-with-command-line-interface).
-```bash
-python -m fastchat.serve.cli --model-path ./model_weights/baize-7b
-```
-
-You can use Baize with OpenAI API or Hugging Face API following the instruction [here](https://github.com/lm-sys/FastChat#api).
 
 ## How to Reproduce
 
