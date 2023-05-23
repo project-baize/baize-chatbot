@@ -5,6 +5,7 @@
 <hr>
 
 ## News
+- **[May 23, 2023]** We are releasing Baize v2! Check out the [7B](https://huggingface.co/project-baize/baize-v2-7b) and [13B](https://huggingface.co/project-baize/baize-v2-13b) model. Code coming soon!
 - **[Apr. 27, 2023]** [Fastchat](https://github.com/lm-sys/FastChat) now supports Baize. Try the new [CLI and API](https://github.com/project-baize/baize-chatbot#cli-and-api)!
 - **[Apr. 21, 2023]** We now have a [script](https://github.com/project-baize/baize-chatbot#merge-lora-into-llama) to merge LoRA weights into standard HF model so you can use it everywhere HF is supported!
 
@@ -25,11 +26,15 @@ This is the repo for the Baize project, which aims to build a chat model with LL
 - The [code](demo/app.py) for chat model demo (forked from [ChuanhuChatGPT](https://github.com/GaiZhenbiao/ChuanhuChatGPT))
 
 ### Model Release
-- [Baize-7B](https://huggingface.co/project-baize/baize-lora-7B)
-- [Baize-13B](https://huggingface.co/project-baize/baize-lora-13B)
-- [Baize-30B](https://huggingface.co/project-baize/baize-lora-30B)
-- [Baize Healthcare-7B](https://huggingface.co/project-baize/baize-healthcare-lora-7b)
-- Baize Chinese-7B (Coming soon)
+#### V1
+- [Baize-v1-7B (LoRA weights)](https://huggingface.co/project-baize/baize-lora-7B)
+- [Baize-v1-13B (LoRA weights)](https://huggingface.co/project-baize/baize-lora-13B)
+- [Baize-v1-30B (LoRA weights)](https://huggingface.co/project-baize/baize-lora-30B)
+- [Baize Healthcare-7B (LoRA weights)](https://huggingface.co/project-baize/baize-healthcare-lora-7b)
+
+#### V2
+- [Baize-v2-7B](https://huggingface.co/project-baize/baize-v2-7b)
+- [Baize-v2-13B](https://huggingface.co/project-baize/baize-v2-13b)
 
 ### Community Models and Data
 - [Fauno](https://github.com/RSTLess-research/Fauno-Italian-LLM/) is an Italian version of Baize.
