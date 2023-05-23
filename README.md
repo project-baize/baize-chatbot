@@ -49,7 +49,7 @@ pip install git+https://github.com/huggingface/peft.git
 pip install git+https://github.com/lm-sys/FastChat.git
 ```
 
-Then, merge Baize's LoRA weights into LLaMA. Take 7B checkpoint as an example.
+(For v1 models only): Merge Baize's LoRA weights into LLaMA. Take 7B checkpoint as an example.
 ```bash
 # Note you have to include "baize" in the target directory so Fastchat can recognize Baize.
 python3 -m fastchat.model.apply_lora --base huggyllama/llama-7b --target ./model_weights/baize-7b --lora project-baize/baize-lora-7B
