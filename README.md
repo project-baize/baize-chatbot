@@ -90,6 +90,12 @@ base_model=huggyllama/llama-7b
 lora_model=project-baize/baize-lora-7B
 python app.py $base_model $lora_model
 ```
+For v2 models (already merged), simply run:
+```bash
+# We assume you have obtained access to use LLaMA.
+base_model=project-baize/baize-v2-7b
+python app.py $base_model
+```
 #### GPU VRAM Requirements
 |           | Inference (without int8) |
 |-----------|--------------------------|
