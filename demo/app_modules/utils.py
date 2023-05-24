@@ -352,32 +352,35 @@ def load_tokenizer_and_model(base_model, adapter_model, load_8bit=False):
             torch_dtype=torch.float16,
             device_map="auto",
         )
-        model = PeftModel.from_pretrained(
-            model,
-            adapter_model,
-            torch_dtype=torch.float16,
-        )
+        if adapter_model is not None:
+            model = PeftModel.from_pretrained(
+                model,
+                adapter_model,
+                torch_dtype=torch.float16,
+            )
     elif device == "mps":
         model = LlamaForCausalLM.from_pretrained(
             base_model,
             device_map={"": device},
             torch_dtype=torch.float16,
         )
-        model = PeftModel.from_pretrained(
-            model,
-            adapter_model,
-            device_map={"": device},
-            torch_dtype=torch.float16,
-        )
+        if adapter_model is not None:
+            model = PeftModel.from_pretrained(
+                model,
+                adapter_model,
+                device_map={"": device},
+                torch_dtype=torch.float16,
+            )
     else:
         model = LlamaForCausalLM.from_pretrained(
             base_model, device_map={"": device}, low_cpu_mem_usage=True
         )
-        model = PeftModel.from_pretrained(
-            model,
-            adapter_model,
-            device_map={"": device},
-        )
+        if adapter_model is not None:
+            model = PeftModel.from_pretrained(
+                model,
+                adapter_model,
+                device_map={"": device},
+            )
 
     if not load_8bit and device != "cpu":
         model.half()  # seems to fix bugs for some users.
