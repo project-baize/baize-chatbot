@@ -18,7 +18,7 @@ load_8bit = (
     if len(sys.argv) > 3 else False
 )
 base_model = sys.argv[1]
-adapter_model = sys.argv[2]
+adapter_model = None if sys.argv[2].lower() == "none" else sys.argv[2]
 tokenizer, model, device = load_tokenizer_and_model(
     base_model, adapter_model, load_8bit=load_8bit
 )
