@@ -94,7 +94,7 @@ For v2 models (already merged), simply run:
 ```bash
 # We assume you have obtained access to use LLaMA.
 base_model=project-baize/baize-v2-7b
-python app.py $base_model
+python app.py $base_model None
 ```
 #### GPU VRAM Requirements
 |           | Inference (without int8) |
