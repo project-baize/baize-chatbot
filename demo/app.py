@@ -13,10 +13,7 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
 )
 
-load_8bit = (
-    sys.argv[3].lower().startswith("8")
-    if len(sys.argv) > 3 else False
-)
+load_8bit = sys.argv[3].lower().startswith("8") if len(sys.argv) > 3 else False
 base_model = sys.argv[1]
 adapter_model = None if sys.argv[2].lower() == "none" else sys.argv[2]
 tokenizer, model, device = load_tokenizer_and_model(
