@@ -21,7 +21,7 @@ Baize (pronounced as By-zor; Simplified Chinese 白泽, Traditional Chinese 白�
 This is the repo for the Baize project, which aims to build a chat model with LLaMA. This repository contains:
 
 - 54K/57K/47K [dialogs](data) from Quora, StackOverFlow and MedQuAD questions
-- The [code](collect.py) for collecting self-chat data
+- The code for collecting self-chat data: [v1](collect.py), [v2](collect_v2.py)
 - The [code](finetune.py) for training Baize
 - The [code](demo/app.py) for chat model demo (forked from [ChuanhuChatGPT](https://github.com/GaiZhenbiao/ChuanhuChatGPT))
 
