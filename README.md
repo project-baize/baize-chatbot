@@ -37,6 +37,7 @@ This is the repo for the Baize project, which aims to build a chat model with LL
 - [Baize-v2-13B](https://huggingface.co/project-baize/baize-v2-13b)
 
 ### Community Models and Data
+- [Falcon-7B-Instruct](https://huggingface.co/tiiuae/falcon-7b-instruct) and [Falcon-40B-Instruct](https://huggingface.co/tiiuae/falcon-40b-instruct) are official Falcon models fine-tuned with Baize data. Falcon is the current state-of-the-art open-source model developed by [TII](https://www.tii.ae/).
 - [Fauno](https://github.com/RSTLess-research/Fauno-Italian-LLM/) is an Italian version of Baize.
 - [Dutch Data](https://github.com/project-baize/baize-chatbot/issues/34): Baize data translated into Dutch.
 
