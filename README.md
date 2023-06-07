@@ -16,7 +16,7 @@ Baize is an open-source chat model trained with [LoRA](https://github.com/micros
 Baize (pronounced as By-zor; Simplified Chinese 白泽, Traditional Chinese 白澤, Japanese 白沢, はくたく) is a mythical creature in Chinese folklore, who speaks human languages and knows everything. This is exactly what we expect from a chat model.
 
 ## Overview
-⚠️ All model weights and data are for **research use ONLY**. Commercial use is **strictly prohibited**. We accept **NO responsibility or liability** for any use of our data, code or weights.
+⚠️ The code is released under [GPL-3.0](./LICENSE). All model weights and data are for **research use ONLY**. Commercial use is **strictly prohibited**. We accept **NO responsibility or liability** for any use of our data, code or weights.
 
 This is the repo for the Baize project, which aims to build a chat model with LLaMA. This repository contains:
 
@@ -165,7 +165,7 @@ python finetune.py 13b 16 0.0001 alpaca,stackoverflow,quora
 python finetune.py 30b 8 0.00005 alpaca,stackoverflow,quora
 ```
 #### GPU VRAM Consumption
-With the settings ABOVE:
+With the settings **above**:
 
 |           | Training (with int8) |
 |-----------|----------------------|
