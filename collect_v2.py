@@ -83,7 +83,7 @@ for query in tqdm(question, total=len(question)):
                 model="gpt-3.5-turbo",
                 messages=conversation_state,
             )
-            ai_tokens = completion["usage"]["total_tokens"]
+            ai_tokens = ai_completion["usage"]["total_tokens"]
             total_tokens += ai_tokens
             ai_response = ai_completion["choices"][0]["message"]["content"]
             instruct += f"\n[Human] {response}\n[AI] {ai_response}"
