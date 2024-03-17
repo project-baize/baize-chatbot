@@ -120,7 +120,7 @@ python app.py $base_model $lora_model 8bit
 pip install -r requirements.txt
 ```
 
-2. If `bitsandbytes` doesn't work, [install it from source](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md). Windows users can follow [these instructions](https://github.com/tloen/alpaca-lora/issues/17).
+2. If `bitsandbytes` doesn't work, [install it from source](https://github.com/TimDettmers/bitsandbytes/blob/main/docs/source/installation.mdx#compile-from-source). Windows users can follow [these instructions](https://github.com/tloen/alpaca-lora/issues/17).
 
 ### Data Collecting
 
